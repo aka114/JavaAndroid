@@ -1,8 +1,6 @@
 package DefaultPackage;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class HomeWorkApp3 {
     private static final int ARRAY_RANGE = 9;
@@ -73,14 +71,16 @@ public class HomeWorkApp3 {
             posOffset0 = (arr8.length + offset * i + currentOffset) % arr8.length;
             posOffset1 = (arr8.length + offset * (i + 1) + currentOffset) % arr8.length;
             if (posOffset0 < 0) {
-                posOffset0 = arr8.length + posOffset0;
+                posOffset0 += arr8.length;
             }
             if (posOffset1 < 0)
-                posOffset1 = arr8.length + posOffset1;
+                posOffset1 += arr8.length;
 
             if (posOffset0 == initialPos && i > 0) {
                 currentOffset++;
+
                 newIteration = true;
+
                 posOffset0 = (arr8.length + offset * i + currentOffset) % arr8.length;
                 posOffset1 = (arr8.length + offset * (i + 1) + currentOffset) % arr8.length;
             }
