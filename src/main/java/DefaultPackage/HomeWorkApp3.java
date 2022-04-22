@@ -27,8 +27,8 @@ public class HomeWorkApp3 {
         // 4.
         int[][] arr4 = new int[ARRAY_RANGE][ARRAY_RANGE];
         fillDiagonalOfArray(arr4);
-        for (int i = 0; i < arr4.length; i++) {
-            System.out.println(Arrays.toString(arr4[i]));
+        for (int[] ints : arr4) {
+            System.out.println(Arrays.toString(ints));
         }
 
         // 5.
@@ -53,7 +53,7 @@ public class HomeWorkApp3 {
 
         // 8.
         int[] arr8 = {2, 5, 6, 3, 56, -4, 34, -23, 12};
-        int offset = 9;
+        int offset = -2;
         System.out.println(Arrays.toString(arr8));
         moveArrayElements(arr8, offset);
         System.out.println(Arrays.toString(arr8));
@@ -72,6 +72,12 @@ public class HomeWorkApp3 {
         for (int i = 0; i < arr8.length; i++) {
             posOffset0 = (arr8.length + offset * i + currentOffset) % arr8.length;
             posOffset1 = (arr8.length + offset * (i + 1) + currentOffset) % arr8.length;
+            if (posOffset0 < 0) {
+                posOffset0 = arr8.length + posOffset0;
+            }
+            if (posOffset1 < 0)
+                posOffset1 = arr8.length + posOffset1;
+
             if (posOffset0 == initialPos && i > 0) {
                 currentOffset++;
                 newIteration = true;
@@ -95,9 +101,9 @@ public class HomeWorkApp3 {
 
         int leftSum = 0;
         int rightSum = Arrays.stream(arr7).sum();
-        for (int pos = 0; pos < arr7.length; pos++) {
-            leftSum += arr7[pos];
-            rightSum -= arr7[pos];
+        for (int i : arr7) {
+            leftSum += i;
+            rightSum -= i;
             if (leftSum == rightSum) {
                 return true;
             }
